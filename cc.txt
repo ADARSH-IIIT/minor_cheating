@@ -1,6 +1,8 @@
-intall nginx
-sudo apt update && sudo apt install -y nginx && sudo systemctl start nginx && sudo systemctl enable nginx && systemctl status nginx
+#intall nginx
+sudo apt update && sudo apt install -y nginx && sudo systemctl start nginx && sudo systemctl enable nginx 
 
+
+ #systemctl status nginx
 
 
 curl http://localhost
@@ -12,6 +14,21 @@ to edit the html file etc etc
 
 
 
+
+
+########33333333333333333333333333##########################################################################
+#!/bin/bash
+# Update package list and install Nginx
+sudo su
+apt update -y
+apt install -y nginx
+
+# Replace the default Nginx HTML file with custom content
+echo "<h1>Welcome to My AWS Instance</h1>" > /var/www/html/index.html
+
+# Restart Nginx to apply changes
+systemctl restart nginx
+###########################################################################################################
 
 
 rdp client , remina 
