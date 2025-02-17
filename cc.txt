@@ -1,0 +1,105 @@
+intall nginx
+sudo apt update && sudo apt install -y nginx && sudo systemctl start nginx && sudo systemctl enable nginx && systemctl status nginx
+
+
+
+curl http://localhost
+list the contnt ofghoisted html file 
+
+
+sudo nano /var/www/html/index.nginx-debian.html
+to edit the html file etc etc
+
+
+
+
+
+rdp client , remina 
+
+
+
+
+lsblk ==> list block storage 
+########################################    ebs mount ############################################################
+
+#!/bin/bash
+
+# Define the device and mount point
+DEVICE=/dev/xvdbb
+MOUNT_POINT=/newmnt/ebs-volume
+
+
+
+# format command , only for nnewly created ebs volume , on detach reattach only mounting 
+sudo mkfs.ext4 $DEVICE
+
+# Create a mount point directory
+sudo mkdir -p $MOUNT_POINT
+
+# Mount the volume
+sudo mount $DEVICE $MOUNT_POINT
+
+# Change ownership to current user (optional, for ease of access)
+ sudo chown -R $USER:$USER $MOUNT_POINT
+
+# Verify mount status
+df -h
+
+
+################ how to go to this point 
+$$ ls pwd etc by default not work 
+# do cd /
+
+cd /
+ls
+pwd 
+# all weill work , u will see a newmnt foolder and inside it ebsvolume is there , in this if we sotre anything it will go to that ebs block storage
+####################################################################################################################################################
+
+
+
+
+
+
+
+##############################################################################################################################################################################################################################
+volume resize 
+
+#unmont 
+sudo umount /dev/xvdbb
+
+
+#repair volume 
+sudo e2fsck -f /dev/xvdbb
+
+
+
+# resize
+sudo resize2fs /dev/xvdbb
+
+#remont 
+sudo mount /dev/xvdbb /mnt/ebs-volume
+
+
+#check
+df -h
+##############################################################################################################################################################################################################################
+
+
+
+
+
+##############################################################################################################################################################################################################################
+
+#resize root volume 
+
+sudo growpart /dev/xvda 1
+sudo resize2fs /dev/xvda1
+
+##############################################################################################################################################################################################################################
+
+
+
+
+
+
